@@ -47,7 +47,7 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
     MatButtonModule,
     AppRoutingModule
   ],
-  providers: [DishService ],
+  providers: [ ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

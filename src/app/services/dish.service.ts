@@ -3,9 +3,9 @@ import { Dish } from '../shared/dish';
 
 import { DISHES } from '../shared/dishes';
 
-// @Injectable({
-//   providedIn: 'root'
-// })
+@Injectable({
+  providedIn: 'root'
+})
 export class DishService {
 
   constructor() { }
