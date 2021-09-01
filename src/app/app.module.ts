@@ -27,6 +27,11 @@ import { LoginComponent } from './login/login.component';
 
 import { MatDialogModule } from '@angular/material';
 
+import { MatFormFieldModule } from '@angular/material';
+import { MatInputModule } from '@angular/material';
+import { MatCheckboxModule } from '@angular/material';
+import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -50,7 +55,11 @@ import { MatDialogModule } from '@angular/material';
     MatCardModule,
     MatButtonModule,
     AppRoutingModule,
-    MatDialogModule
+    MatDialogModule,
+    FormsModule,
+    MatFormFieldModule,
+    MatCheckboxModule,
+    MatInputModule
   ],
   entryComponents:[LoginComponent],
 
