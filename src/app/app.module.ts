@@ -39,6 +39,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { MatSliderModule } from '@angular/material/slider';
 
+import { ProcessHttPMsgService } from './services/process-htt-pmsg.service';
+
 
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 

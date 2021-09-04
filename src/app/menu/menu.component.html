@@ -18,10 +18,12 @@
       </mat-grid-tile>
     </mat-grid-list>
   </div>
-  <div fxFlex [hidden]="dishes">
+  <div fxFlex [hidden]="dishes || errMess">
     <mat-spinner></mat-spinner> 
     <h4>Loading ... please Wait</h4>
   </div>
+
+  0
   
   <!-- <app-dishdetail [dish]="selectedDish"></app-dishdetail>   (click)="onSelect(dish)"-->
 
