@@ -29,7 +29,7 @@ export class ContactComponent implements OnInit {
     'firstname':{
       'required':'First name is required',
       'minlength':'First name must be atleast 2 characters long',
-      'maxlength':'first name cannot be more than 25 characters'
+      'maxlength':'first name cannot be more than 25 characters',
     },
     'lastname':{
       'required':'First name is required',
@@ -63,9 +63,10 @@ export class ContactComponent implements OnInit {
       contacttype:'None',
       message:''
     });
-    this.feedbackForm.valueChanges.subscribe(data => this.onValueChanged(data));
+    this.feedbackForm.valueChanges.subscribe(data => this.onValueChanged());
+    
 
-    this.onValueChanged(); //(reser) form validation messages
+    this.onValueChanged(); //(reset) form validation messages
   }
 
   onValueChanged(data?: any) {
@@ -78,7 +79,6 @@ export class ContactComponent implements OnInit {
         const control = form.get(field);
         if (control && control.dirty && !control.valid) {
           const messages = this.validationMessages[field];
-          console.log("here", control.errors);
           for (const key in control.errors) {
             if (control.errors.hasOwnProperty(key)) {
               this.formErrors[field] += messages[key] + ' ';

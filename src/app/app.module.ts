@@ -11,6 +11,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSelect, MatSelectModule } from '@angular/material';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
+import { HttpClientModule } from '@angular/common/http';
+
 import { AppComponent } from './app.component';
 
 import 'hammerjs';
@@ -35,8 +37,12 @@ import { MatCheckboxModule } from '@angular/material';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 
+import { MatSliderModule } from '@angular/material/slider';
+
 
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+
+import { baseURL } from './shared/baseurl';
 
 
 @NgModule({
@@ -69,11 +75,13 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     ReactiveFormsModule,
     MatSelectModule,
     MatSlideToggleModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatSliderModule,
+    HttpClientModule
   ],
   entryComponents:[LoginComponent],
 
-  providers: [ ],
+  providers: [ {provide: 'BaseURL', useValue: baseURL}], // here should be the services but if 
   bootstrap: [AppComponent]
 })
 export class AppModule { }
