@@ -3,7 +3,8 @@
 
 <!-- {{dish | json}}
 {{baseUrl}} -->
-  <div fxFlex="40" *ngIf="dish">
+  <div fxFlex="40" *ngIf="dish" [@visiblity]="visiblity">
+    
     <div fxFlex>
       <mat-card>
         <mat-card-header>
@@ -29,7 +30,7 @@
     </div>
   </div>
 
-  <div fxFlex="40" *ngIf="dish">
+  <div fxFlex="40" *ngIf="dish" [@visiblity]="visiblity">
     <mat-list >
       <h3>Comments</h3>
       <mat-list-item *ngFor="let comment of dish.comments">
