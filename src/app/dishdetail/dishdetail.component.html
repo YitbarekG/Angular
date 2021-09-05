@@ -50,8 +50,9 @@
       </mat-list>
 
       <form novalidate [formGroup]="commentForm" (ngSubmit)="onSubmit()" #cform="ngForm">
+        
         <mat-form-field class="full-width">
-          <p ><input matInput type="text" placeholder="Name" formControlName="name"></p>
+          <p><input matInput type="text" placeholder="Name" formControlName="name"></p>
           <mat-error *ngIf="formErrors.name">{{formErrors.name}}</mat-error>
         </mat-form-field>
 
@@ -64,8 +65,10 @@
           <mat-error *ngIf="formErrors.comment">{{formErrors.comment}}</mat-error>
         </mat-form-field>
         
-      
-          <button type="submit" mat-button class="background-primary text-floral-white" [disabled]="commentForm.invalid" >Submit</button>
+      <p>
+        <button type="submit" mat-button class="background-primary text-floral-white" [disabled]="commentForm.invalid" >Submit</button>
+
+      </p>
         
       </form>
       

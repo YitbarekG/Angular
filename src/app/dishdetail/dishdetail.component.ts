@@ -4,7 +4,7 @@ import { Location } from '@angular/common';
 import { Dish } from '../shared/dish';
 import { DishService } from '../services/dish.service';
 
-import { switchMap } from 'rxjs/operators';
+import { subscribeOn, switchMap } from 'rxjs/operators';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Comment } from '../shared/comment';
 
@@ -28,6 +28,8 @@ export class DishdetailComponent implements OnInit {
   commentForm:FormGroup;
   comment:Comment;
   errMess:string;
+  dishCopy:Dish;
+
 
   formErrors={
     'name':'',
@@ -53,7 +55,7 @@ export class DishdetailComponent implements OnInit {
   ngOnInit() {
     // let id = this.route.snapshot.params['id'];
     this.dishService.getDishIds().subscribe((dishIds)=>this.dishIds=dishIds, error=>this.errMess=error);
-    this.route.params.pipe(switchMap((params:Params)=>this.dishService.getDish(params['id']))).subscribe(dish=>{this.dish=dish;this.setPrevNext(dish.id)},errmess=>this.errMess=errmess);
+    this.route.params.pipe(switchMap((params:Params)=>this.dishService.getDish(params['id']))).subscribe(dish=>{this.dish=dish; this.dishCopy=dish; this.setPrevNext(dish.id)},errmess=>this.errMess=errmess);
     // this.dishService.getDish(id).subscribe((dish)=>this.dish=dish);
     // console.log(this.dish);
   }
@@ -76,6 +78,7 @@ export class DishdetailComponent implements OnInit {
     });
 
     this.commentForm.valueChanges.subscribe(data=>this.onValueChange());
+    this.onValueChange()
   }
 
   onValueChange(){
@@ -115,7 +118,10 @@ export class DishdetailComponent implements OnInit {
     author: this.commentForm.value.name,
     date: date1.toISOString()
     } 
-    this.dish.comments.push(this.comment);
+    this.dishCopy.comments.push(this.comment);
+    this.dishService.putdish(this.dishCopy).subscribe(dish=>{
+      this.dish = dish; this.dishCopy=dish;
+    }, errmess=>{this.dish=null;this.dishCopy=null; this.errMess=<any>errmess});
     this.feedbackFormDirective.resetForm();
     
   }
