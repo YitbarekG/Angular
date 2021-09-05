@@ -45,6 +45,7 @@ import { ProcessHttPMsgService } from './services/process-htt-pmsg.service';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { baseURL } from './shared/baseurl';
+import { HighlightDirective } from './directives/highlight.directive';
 
 
 @NgModule({
@@ -57,7 +58,8 @@ import { baseURL } from './shared/baseurl';
     HomeComponent,
     AboutComponent,
     ContactComponent,
-    LoginComponent
+    LoginComponent,
+    HighlightDirective
   ],
   imports: [
     BrowserModule,
