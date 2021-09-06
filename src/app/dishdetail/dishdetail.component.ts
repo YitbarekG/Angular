@@ -7,8 +7,7 @@ import { DishService } from '../services/dish.service';
 import { subscribeOn, switchMap } from 'rxjs/operators';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Comment } from '../shared/comment';
-
-import { trigger, state, style, animate, transition } from '@angular/animations';
+import { visiblity, flyInOut, expand } from '../animations/app.animation';
 
 
 
@@ -17,18 +16,9 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
   templateUrl: './dishdetail.component.html',
   styleUrls: ['./dishdetail.component.css'],
   animations:[
-    trigger('visiblity',[
-      state('shown', style({
-        transform:'scale(1.0)',
-        opacity:1
-      })),
-      state('hidden', style({
-        transform: 'scale(0.5)',
-        opacity: 0
-    })),
-    transition('* => *', animate('0.5s ease-in-out'))
-
-    ])
+    visiblity(),
+    flyInOut(),
+    expand()
   ]
 })
 export class DishdetailComponent implements OnInit {
